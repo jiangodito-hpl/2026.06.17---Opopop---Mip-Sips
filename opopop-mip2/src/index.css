@@ -1,0 +1,392 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Barlow";
+  src: url("./fonts/Barlow-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Barlow";
+  src: url("./fonts/Barlow-Bold.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+.barlow-bold {
+  font-family:
+    "Barlow",
+    system-ui,
+    sans-serif;
+  font-weight: 700;
+}
+
+.barlow-regular {
+  font-family:
+    "Barlow",
+    system-ui,
+    sans-serif;
+  font-weight: 400;
+}
+
+:root {
+  font-family: "Barlow", system-ui, sans-serif;
+  color: #222222;
+  font-synthesis: none;
+  text-rendering: geometricPrecision;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  background: #ffff;
+}
+
+button {
+  font: inherit;
+}
+
+.app-wrapper {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: #ecf8f6;
+}
+
+.app-wrapper--game.app-wrapper--landscape {
+  background: linear-gradient(180deg, #f8f8f6 0 75.2%, #c9f2f5 75.2% 100%);
+}
+
+.app-wrapper--end {
+  background: #ffc400;
+}
+
+.app {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  transform-origin: top left;
+  overflow: hidden;
+}
+
+.pop-game,
+.end-card {
+  position: relative;
+  overflow: hidden;
+  background: #f8f8f6;
+  touch-action: none;
+  user-select: none;
+}
+
+.top-bar {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 34px;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffd900;
+  border-bottom: 3px solid #202020;
+}
+
+.top-bar img {
+  display: block;
+  width: 86px;
+  max-height: 23px;
+  object-fit: contain;
+}
+
+.blue-platform {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 13;
+  background: linear-gradient(180deg, #d8f7f8 0%, #c0edf1 100%);
+}
+
+.intro-copy,
+.win-copy {
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  text-align: center;
+  pointer-events: none;
+}
+
+.tap-start-text {
+  font-family: "Barlow", system-ui, sans-serif;
+  font-weight: 400;
+}
+
+.countdown {
+  position: absolute;
+  left: 50%;
+  z-index: 20;
+  width: max-content;
+  color: #242424;
+  font-family: "Barlow", system-ui, sans-serif;
+  font-size: 20rem;
+  font-weight: 900;
+  line-height: 1;
+  text-align: center;
+  text-transform: uppercase;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.countdown-start {
+  font-size: 122px;
+}
+
+.stars {
+  display: flex;
+  justify-content: center;
+  gap: 42px;
+  margin-top: 34px;
+  color: #ffd000;
+  font-size: 26px;
+  font-weight: 900;
+}
+
+.score {
+  position: absolute;
+  right: 18px;
+  z-index: 24;
+  color: #232323;
+  font-size: 18px;
+  font-weight: 900;
+  pointer-events: none;
+}
+
+.decor-popcorn,
+.falling-popcorn {
+  position: absolute;
+  z-index: 10;
+  height: auto;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.falling-popcorn {
+  z-index: 12;
+}
+
+.bucket-caught {
+  position: absolute;
+  z-index: 18;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.bucket-caught img {
+  position: absolute;
+  height: auto;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.catch-confetti {
+  position: absolute;
+  z-index: 35;
+  height: auto;
+  object-fit: contain;
+  pointer-events: none;
+  animation: catch-confetti-pop 1.8s ease-out forwards;
+}
+
+.win-bucket-confetti {
+  position: absolute;
+  z-index: 17;
+  height: auto;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.bucket {
+  position: absolute;
+  z-index: 16;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.swipe-hand {
+  position: absolute;
+  z-index: 25;
+  object-fit: contain;
+  pointer-events: none;
+  animation: swipe-hand 1.15s ease-in-out infinite;
+}
+
+.cta-button {
+  position: absolute;
+  left: 50%;
+  z-index: 60;
+  display: block;
+  padding: 0;
+  width: 275px;
+  border: 0;
+  background: transparent;
+  transform: translateX(-50%);
+  cursor: pointer;
+  animation: cta-pulse 1.15s ease-in-out infinite;
+}
+
+.cta-button img {
+  display: block;
+  height: auto;
+  pointer-events: none;
+}
+
+.end-card {
+  background: #ffc900;
+}
+
+.end-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.end-content {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 48px;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  pointer-events: none;
+}
+
+.end-cta {
+  position: relative;
+  left: auto;
+  bottom: auto;
+  width: 275px;
+  transform: translateX(0);
+  animation: end-cta-pulse 1.15s ease-in-out infinite;
+  pointer-events: auto;
+}
+
+@keyframes swipe-hand {
+  0%,
+  100% {
+    transform: translateX(-20px) rotate(-8deg);
+  }
+  50% {
+    transform: translateX(22px) rotate(7deg);
+  }
+}
+
+@keyframes cta-pulse {
+  0%,
+  100% {
+    transform: translateX(-50%) scale(1);
+  }
+  50% {
+    transform: translateX(-50%) scale(1.06);
+  }
+}
+
+@keyframes end-cta-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.06);
+  }
+}
+
+@keyframes catch-confetti-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.62);
+  }
+  12% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  78% {
+    opacity: 1;
+    transform: scale(1.03);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.08);
+  }
+}
+
+@media (orientation: landscape) {
+  .top-bar {
+    height: 28px;
+    border-bottom-width: 2px;
+  }
+
+  .top-bar img {
+    width: 72px;
+    max-height: 19px;
+  }
+
+  .intro-copy h1 {
+    font-size: 23px;
+  }
+
+  .intro-copy p {
+    margin-top: 35px;
+    font-size: 11px;
+  }
+
+  .countdown {
+    font-size: 94px;
+  }
+
+  .win-copy h2 {
+    font-size: 22px;
+  }
+
+  .stars {
+    margin-top: 22px;
+    gap: 36px;
+    font-size: 22px;
+  }
+
+  .end-content {
+    bottom: 26px;
+    gap: 15px;
+  }
+
+  .end-content h1 {
+    font-size: 24px;
+  }
+
+  .end-cta {
+    width: 126px;
+  }
+}
